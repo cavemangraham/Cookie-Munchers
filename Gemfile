@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'shoppe', '~> 1.0'
+gem "shoppe-stripe", require: "shoppe/stripe"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
