@@ -5,22 +5,23 @@
 <% if current_order.total_before_tax >= 6 %>
     <%= form_for @order, :url => checkout_path do |f| %>
       <dl>
-        <dt><%= f.label :first_name, 'Name' %></dt>
+        <dt><%= f.label :first_name, 'Name:' %></dt>
         <dd><%= f.text_field :first_name %> <%= f.text_field :last_name %></dd>
 
-        <dt><%= f.label :billing_address1, 'Address' %></dt>
+        <dt><%= f.label :billing_address1, 'Address:' %></dt>
         <dd><%= f.text_field :billing_address1 %></dd>
-        <dd><%= f.text_field :billing_address2 %></dd>
-        <dd><%= f.text_field :billing_address3 %></dd>
-        <dd><%= f.text_field :billing_address4 %></dd>
-        <dt><%= f.label :billing_postcode, 'Post code' %></dt>
-        <dd><%= f.text_field :billing_postcode %></dd>
-        <dd><%= f.collection_select :billing_country_id, Shoppe::Country.ordered, :id, :name, :include_blank => true %></dd>
+        <dt><%= f.label :billing_address2, 'Glassboro, NJ 08028' %></dt>
+        <%= f.hidden_field :billing_address2, value: 0 %>
+        <%= f.hidden_field :billing_address3, value: 0 %>
+        <%= f.hidden_field :billing_address4, value: 0 %>
 
-        <dt><%= f.label :email_address %></dt>
+        <%= f.hidden_field :billing_postcode, value: 0 %>
+        <%= f.hidden_field :billing_country_id, value: 234 %>
+
+        <dt><%= f.label :email_address, "Email address:" %></dt>
         <dd><%= f.text_field :email_address %></dd>
 
-        <dt><%= f.label :phone_number %></dt>
+        <dt><%= f.label :phone_number, "Phone number:" %></dt>
         <dd><%= f.text_field :phone_number %></dd>
 
         <dd><%= f.submit 'Continue' %></dd>
