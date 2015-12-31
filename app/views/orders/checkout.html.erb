@@ -7,11 +7,9 @@
       <dl>
         <dt><%= f.label :first_name, 'Name:' %></dt>
         <dd><%= f.text_field :first_name %> <%= f.text_field :last_name %></dd>
-
-        <dt><%= f.label :billing_address1, 'Address:' %></dt>
-        <dd><%= f.text_field :billing_address1 %></dd>
-        <dt><%= f.label :billing_address2, 'Glassboro, NJ 08028' %></dt>
+        <%= f.hidden_field :billing_address1, value: 0 %>
         <%= f.hidden_field :billing_address2, value: 0 %>
+
         <%= f.hidden_field :billing_address3, value: 0 %>
         <%= f.hidden_field :billing_address4, value: 0 %>
 
@@ -23,6 +21,15 @@
 
         <dt><%= f.label :phone_number, "Phone number:" %></dt>
         <dd><%= f.text_field :phone_number %></dd>
+
+            <%= f.label :billing_address1, 'Deliver to:' %>
+            <p>
+                <%= f.label :billing_address2, 'Building' %>
+                <%= f.select :billing_address2, [['Townhouses'],['Edgewood'],['Robo'],['Laurel'],['Oak'],['Evergreen'],['Mullica'],['Willow'],['Magnolia'],['Chestnut'],['Triad'],['Whitney'],['International']] %>
+                <%= f.label :billing_address1, 'Room Number' %>
+                <%= f.text_field :billing_address1 %>
+                
+            </p>
 
         <dd><%= f.submit 'Continue' %></dd>
       </dl>

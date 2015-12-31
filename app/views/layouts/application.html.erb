@@ -7,30 +7,34 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% if current_order %>
-  <p style="border:1px solid black;padding:10px;">
-    You have <%= pluralize current_order.total_items, 'item'%> in your basket which cost
-    <%= number_to_currency current_order.total_before_tax %>.
-    <%= link_to "View basket", basket_path %>
-    <%= link_to "Checkout", checkout_path %>
-  </p>
-<% end %>
-<p>
-  <span style="color:red;">
-    <% if current_order.total_before_tax < 6 %>
-      You have not met the minimum order.
-    <% end %>
+  <% if current_order %>
+    <nav class="navbar navbar-default">
+      <span class="navbar-links"><%= link_to "Home", root_path %></span>
+      <span class="navbar-links"><%= link_to "View basket", basket_path %></span>
+      <span class="navbar-links"><%= link_to "Checkout", checkout_path %></span>
+    </nav>
+    <p style="border:1px solid black;padding:10px;">
+      You have <%= pluralize current_order.total_items, 'item'%> in your basket which cost
+      <%= number_to_currency current_order.total_before_tax %>.
+    </p>
+  <% end %>
+  <p>
+    <span style="color:red;">
+      <% if current_order.total_before_tax < 6 %>
+        You have not met the minimum order.
+      <% end %>
+    </span>
+  <span style="color:green;">
+    <%= flash[:notice] %>
   </span>
-<span style="color:green;">
-  <%= flash[:notice] %>
-</span>
-<span>
-  &nbsp
-</span>
-</p>
+  <span>
+    &nbsp
+  </span>
+  </p>
 
+  <body class="wrapper-skinny">
+    <%= yield %>
+  </body>
 
-<%= yield %>
-
-</body>
+  </body>
 </html>
